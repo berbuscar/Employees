@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using MasGlobal.Employees.Common.Mapper;
+using MasGlobal.Employees.Core.Factory;
 
 namespace MasGlobal.Employees.Core.Repository
 {
@@ -46,15 +47,15 @@ namespace MasGlobal.Employees.Core.Repository
             Parallel.ForEach(employees, (currentEmployee) =>
             {
                 //select factory
-                var EmployeeFactory = Employee.GetEmploye(NameSpaceFactoryUrl + currentEmployee.ContractTypeName);
+                var Employee = EmployeeFactory.Build(NameSpaceFactoryUrl + currentEmployee.ContractTypeName);
                 //init factory whit data
-                EmployeeFactory = mapper.MapRequestToExpected(EmployeeFactory,
-                                                              currentEmployee,
-                                                              typeof(Employee)) as Employee;
+                Employee = mapper.MapRequestToExpected(Employee,
+                                                       currentEmployee,
+                                                       typeof(Employee)) as Employee;
                 //calc AnnualSalary
-                EmployeeFactory.CalcAnnualSalary();
-                currentEmployee = mapper.MapResponseToExpected(EmployeeFactory, 
-                                                               typeof(Employee), 
+                Employee.CalcAnnualSalary();
+                currentEmployee = mapper.MapResponseToExpected(Employee,
+                                                               typeof(Employee),
                                                                typeof(EmployeeTO)) as EmployeeTO;
 
                 EmployeesFactory.Add(currentEmployee);

@@ -4,13 +4,6 @@ namespace MasGlobal.Employees.Core.Bussiness
 {
     public abstract class Employee
     {
-        public static Employee GetEmploye(string ContractType)
-        {
-            Employee entity = Activator.CreateInstance(Type.GetType(ContractType)) as Employee;
-
-            return entity;
-        }
-
         public int Id { get; set; }
 
         public string Name { get; set; }
