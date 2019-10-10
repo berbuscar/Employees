@@ -2,6 +2,7 @@
     var inputIdEmployee = $("#inputIdEmployee");
     var $buttonConsultar = $("#btnGetInfoEmployee");
     var urlConsulta = $buttonConsultar.data("datos");
+    $('#loadingmessage').show();
 
     $.ajax({
         async: false,
@@ -15,10 +16,14 @@
             datatable.clear();
             datatable.rows.add(response);
             datatable.draw();
+            
         },
         error: function (error) {
             var errorMessage = error.statusText;
             alert(errorMessage);
+        },
+        complete: function (data) {
+            $('#loadingmessage').hide();
         }
     });
 }
