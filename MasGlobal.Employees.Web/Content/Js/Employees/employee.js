@@ -2,7 +2,9 @@
     var inputIdEmployee = $("#inputIdEmployee");
     var $buttonConsultar = $("#btnGetInfoEmployee");
     var urlConsulta = $buttonConsultar.data("datos");
-    $('#loadingmessage').show();
+    $('#loadingmessage').show(); 
+
+    sleep(3000);
 
     $.ajax({
         async: false,
@@ -26,6 +28,11 @@
             $('#loadingmessage').hide();
         }
     });
+}
+
+function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
 }
 
 function registrarEventos() {
