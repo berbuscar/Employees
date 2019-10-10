@@ -3,13 +3,9 @@ using System;
 
 namespace MasGlobal.Employees.Core.Factory
 {
-    public static class EmployeeFactory
+    public abstract class EmployeeFactory
     {
-        public static Employee Build(string ContractTypeName)
-        {
-            Employee entity = Activator.CreateInstance(Type.GetType(ContractTypeName)) as Employee;
-
-            return entity;
-        }
+        public abstract Employee GetEmployee(string ContractTypeName);
+        
     }
 }

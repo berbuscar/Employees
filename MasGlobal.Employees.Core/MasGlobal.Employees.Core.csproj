@@ -48,10 +48,11 @@
     <Compile Include="Bussiness\HourlySalaryEmployee.cs" />
     <Compile Include="Bussiness\MonthlySalaryEmployee.cs" />
     <Compile Include="Bussiness\Employee.cs" />
+    <Compile Include="Factory\GeneralEmployeFactory.cs" />
     <Compile Include="Factory\EmployeeFactory.cs" />
     <Compile Include="Integration\IEmployeeIntegrationDAO.cs" />
-    <Compile Include="Repository\InfoEmployeeRepository.cs" />
-    <Compile Include="Repository\IInfoEmployeeRepository.cs" />
+    <Compile Include="Repository\Implementation\InfoEmployeeRepository.cs" />
+    <Compile Include="Repository\Interface\IInfoEmployeeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -47,7 +47,7 @@ namespace MasGlobal.Employees.Core.Repository
             Parallel.ForEach(employees, (currentEmployee) =>
             {
                 //select factory
-                var Employee = EmployeeFactory.Build(NameSpaceFactoryUrl + currentEmployee.ContractTypeName);
+                var Employee = new GeneralEmployeFactory().GetEmployee(NameSpaceFactoryUrl + currentEmployee.ContractTypeName);
                 //init factory whit data
                 Employee = mapper.MapRequestToExpected(Employee,
                                                        currentEmployee,
