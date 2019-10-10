@@ -4,7 +4,7 @@
     var urlConsulta = $buttonConsultar.data("datos");
     $('#loadingmessage').show(); 
 
-    sleep(3000);
+    //sleep(3000);
 
     $.ajax({
         async: false,
