@@ -1,0 +1,30 @@
+﻿using MasGlobal.Employees.Common.ProveedoresDependencias;
+using Spring.Context;
+using Spring.Context.Support;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
+
+namespace MasGlobal.Employees.Web
+{
+    public class WebApiApplication : System.Web.HttpApplication
+    {
+        protected void Application_Start()
+        {
+            AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //Custom dependency resolver
+            //Se registra el encargado de resolver las instancias y dependencias
+            IApplicationContext context = ContextRegistry.GetContext();
+            DependencyResolver.SetResolver(new SolucionadorDependencia(context));
+        }
+    }
+}

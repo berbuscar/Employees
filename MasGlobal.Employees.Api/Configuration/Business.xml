@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:aop="http://www.springframework.net/aop"
+         xmlns:db="http://www.springframework.net/database"
+         xmlns:tx="http://www.springframework.net/tx">
+  <description>Declaración de servicios de negocio</description>
+
+  <!-- API Controllers -->
+  <object id="EmployeeController" type="MasGlobal.Employees.Api.Controllers.EmployeeController, MasGlobal.Employees.Api" singleton="false">
+    <constructor-arg ref="EmployeeRepositoryTarget" />
+  </object>
+ 
+  <!-- Módulos de negocios - Repositorios -->
+  <object id="EmployeeRepositoryTarget" type="MasGlobal.Employees.Core.Repository.InfoEmployeeRepository, MasGlobal.Employees.Core">
+    <property name="EmployeeIntegrationDAO" ref="EmployeeIntegrationDAO"/>
+  </object>
+
+  <!-- DAOs -->
+  <object id="EmployeeIntegrationDAO" type="MasGlobal.Employees.DAO.Integration.EmployeeIntegrationDAO, MasGlobal.Employees.DAO">
+  </object>
+
+</objects>
