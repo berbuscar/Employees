@@ -2,9 +2,11 @@
 {
     public class HourlySalaryEmployee: Employee
     {
+        private double BaseAnnual { get; } = 120;
+
         public override void CalcAnnualSalary()
         {
-            this.AnnualSalary = 120 * this.HourlySalary * 12;
+            this.AnnualSalary = this.BaseAnnual * this.HourlySalary * 12;
         }
     }
 }
